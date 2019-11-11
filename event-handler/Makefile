@@ -7,7 +7,7 @@ clean:
 	rm -rf ./hello-world/hello-world
 	
 build:
-	GOOS=linux GOARCH=amd64 go build -o bin/hello-world ./hello-world
+	GOOS=linux GOARCH=amd64 go build -o hello-world/bin/hello-world ./hello-world
 
 test:
 	go test -v ./...

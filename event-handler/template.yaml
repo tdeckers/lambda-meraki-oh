@@ -20,8 +20,8 @@ Resources:
   MerakiOhFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: ./bin/hello-world
-      Handler: hello-world
+      CodeUri: ./hello-world
+      Handler: bin/hello-world
       Role: !GetAtt MerakiOhFunctionRole.Arn
       Runtime: go1.x
       Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
