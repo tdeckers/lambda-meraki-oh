@@ -184,20 +184,16 @@ func getParamsFromSSM(ctx context.Context) (*Parameters, error) {
 
 	sess := session.Must(session.NewSession())
 	ssmClient := ssm.New(sess)
-	//xray.AWS(ssmClient.Client) // No clue why this doesn't work.
-	// See: https://github.com/aws/aws-xray-sdk-go/blob/master/xray/aws.go#L159
-	// For now, adding segment manually.
+	xray.AWS(ssmClient.Client)
 
 	withDecryption := false
 	if Env == "prod" {
 		withDecryption = true
 	}
-	ctx, segment := xray.BeginSubsegment(ctx, "SSM")
 	param, err := ssmClient.GetParameterWithContext(ctx, &ssm.GetParameterInput{
 		Name:           &keyname,
 		WithDecryption: &withDecryption,
 	})
-	segment.Close(err)
 
 	if err != nil {
 		return &Parameters{}, err

@@ -6,3 +6,4 @@ debug.test
 *.code-workspace
 
 event-handler/deploy.yaml
+event-handler/hello-world/hello-world
