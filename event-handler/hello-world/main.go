@@ -158,6 +158,9 @@ func setupEnvironment(ctx context.Context) {
 	}
 
 	Clients = params.Clients
+	for i, v := range Clients {
+		Clients[i] = strings.ToUpper(v)
+	}
 	fmt.Printf("Loaded %d devices\n", len(Clients))
 
 	OpenhabURL = params.OpenhabURL
